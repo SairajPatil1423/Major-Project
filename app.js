@@ -28,7 +28,7 @@ const userRouter = require("./routes/user.js");
 const store = MongoStore.create({
     mongoUrl:dbURL,
     crypto:{
-        secret:'keyboard cat'
+        secret:process.env.SECRET
     },
     touchAfter: 24*3600
 });
@@ -39,7 +39,7 @@ store.on("error",()=>{
 const sessionoptions =
 {
     store,
-    secret: 'keyboard cat',
+    secret: process.env.SECRET,
     resave: false,
     saveUninitialized: true,
     cookie:{
